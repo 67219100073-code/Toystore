@@ -1,0 +1,247 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Toy Store - My Cart</title>
+
+<style>
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f6f0ff;
+    color: #333;
+  }
+
+  .header-banner {
+    width: 100%;
+    display: block;
+    max-height: 400px;
+    object-fit: cover;
+  }
+
+  .menu-text {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 25px;
+    background: linear-gradient(135deg, #ffd6f3 0%, #d6e8ff 100%);
+    box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+  }
+
+  .menu-text a {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 15px;
+    padding: 12px 25px;
+    border-radius: 30px;
+    background: #ffffff;
+    color: #7b2cff;
+    box-shadow: 0 4px 10px rgba(123, 44, 255, 0.1);
+    transition: all 0.3s ease;
+  }
+
+  .menu-text a:hover {
+    background: #7b2cff;
+    color: #ffffff;
+    transform: translateY(-3px);
+  }
+
+  .cart-container {
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 20px;
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+  }
+
+  .cart-items {
+    flex: 2;
+    background: #fff;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  }
+
+  .cart-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 0;
+    border-bottom: 1px solid #eee;
+  }
+
+  .cart-item img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+
+  .item-info {
+    flex: 1;
+  }
+
+  .item-info h3 {
+    margin: 0 0 5px 0;
+    color: #7b2cff;
+  }
+
+  .item-price {
+    font-weight: bold;
+    color: #ff4fa3;
+  }
+
+  .cart-summary {
+    flex: 1;
+    background: #fff;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    height: fit-content;
+  }
+
+  .summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    font-size: 18px;
+  }
+
+  .total-row {
+    border-top: 2px solid #f6f0ff;
+    padding-top: 15px;
+    font-weight: bold;
+    font-size: 22px;
+    color: #7b2cff;
+  }
+
+  .checkout-btn {
+    width: 100%;
+    padding: 15px;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: 0.3s;
+  }
+
+  .remove-btn {
+    background: #ff4f4f;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  .footer {
+    background: linear-gradient(to right, #d6e8ff, #ffd6f3);
+    padding: 40px 20px;
+    text-align: center;
+    margin-top: 50px;
+  }
+</style>
+</head>
+
+<body>
+
+<img src="Product (5).png" class="header-banner">
+
+<div class="menu-text">
+  <a href="index.html">Home</a>
+  <a href="age.html">Age</a>
+  <a href="Brands.html">Brands</a>
+  <a href="cart.html">Cart</a>
+  <a href="discount.html">Discount</a>
+  <a href="faver.html">Faver</a>
+  <a href="Giftcard.html">Giftcard</a>
+  <a href="newproduct.html">New</a>
+  <a href="product.html">Product</a>
+  <a href="search.html">Search</a>
+</div>
+
+<div class="cart-container">
+  <div class="cart-items" id="cart-list">
+    <h2>Your Cart</h2>
+    </div>
+
+  <div class="cart-summary">
+    <h2>Summary</h2>
+    <div class="summary-row">
+      <span>Subtotal</span>
+      <span id="subtotal">$0.00</span>
+    </div>
+    <div class="summary-row">
+      <span>Shipping</span>
+      <span id="shipping">$0.00</span>
+    </div>
+    <div class="summary-row total-row">
+      <span>Total</span>
+      <span id="total">$0.00</span>
+    </div>
+    <button class="checkout-btn" onclick="checkout()">Checkout Now</button>
+  </div>
+</div>
+
+<div class="footer">
+  <h2>Contact Us</h2>
+  <p>📍 Toy Store Phuttalungok, Thailand</p>
+  <p>📞 081-062-6483 | 📧 toystore@email.com</p>
+</div>
+
+<script>
+function renderCart() {
+  const cartList = document.getElementById('cart-list');
+  const cart = JSON.parse(localStorage.getItem('toyCart')) || [];
+  let subtotal = 0;
+
+  cartList.innerHTML = '<h2>Your Cart</h2>';
+
+  if (cart.length === 0) {
+    cartList.innerHTML += '<p style="text-align:center; padding:20px;">Your cart is empty.</p>';
+  } else {
+    cart.forEach((item, index) => {
+      subtotal += item.price;
+      cartList.innerHTML += `
+        <div class="cart-item">
+          <img src="${item.image}">
+          <div class="item-info">
+            <h3>${item.name}</h3>
+            <p class="item-price">$${item.price.toFixed(2)}</p>
+          </div>
+          <button class="remove-btn" onclick="removeItem(${index})">Remove</button>
+        </div>
+      `;
+    });
+  }
+
+  const shipping = subtotal > 0 ? 5.00 : 0.00;
+  document.getElementById('subtotal').innerText = '$' + subtotal.toFixed(2);
+  document.getElementById('shipping').innerText = '$' + shipping.toFixed(2);
+  document.getElementById('total').innerText = '$' + (subtotal + shipping).toFixed(2);
+}
+
+function removeItem(index) {
+  let cart = JSON.parse(localStorage.getItem('toyCart')) || [];
+  cart.splice(index, 1);
+  localStorage.setItem('toyCart', JSON.stringify(cart));
+  renderCart();
+}
+
+function checkout() {
+  alert('Thank you for your purchase!');
+  localStorage.removeItem('toyCart');
+  renderCart();
+}
+
+renderCart();
+</script>
+
+</body>
+</html>

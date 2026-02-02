@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Toy Store - Checkout</title>
+<style>
+  body { margin: 0; font-family: Arial, sans-serif; background: #f6f0ff; display: flex; align-items: center; justify-content: center; height: 100vh; }
+  .checkout-container { background: white; padding: 40px; border-radius: 30px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); width: 100%; max-width: 450px; text-align: center; }
+  .product-img { width: 150px; height: 150px; object-fit: cover; border-radius: 20px; margin-bottom: 20px; }
+  .price-text { font-size: 32px; color: #ff4fa3; font-weight: bold; margin: 20px 0; }
+  .btn-group { display: flex; gap: 10px; margin-top: 30px; }
+  .confirm-btn { flex: 2; padding: 15px; background: #4CAF50; color: white; border: none; border-radius: 15px; font-weight: bold; cursor: pointer; font-size: 18px; }
+  .cancel-btn { flex: 1; padding: 15px; background: #ccc; color: white; border: none; border-radius: 15px; font-weight: bold; cursor: pointer; }
+  #thank-you-msg { display: none; }
+  .home-btn { display: inline-block; margin-top: 20px; padding: 10px 20px; background: #7b2cff; color: white; text-decoration: none; border-radius: 20px; }
+</style>
+</head>
+<body>
+
+<div class="checkout-container" id="checkout-box">
+  <h2 style="color:#7b2cff;">Confirm Your Order</h2>
+  <img src="Cute Teddy Bear_.jpg" class="product-img">
+  <h3>Cute Teddy Bear</h3>
+  <div class="price-text">Price: $25.00</div>
+  <p>Are you sure you want to purchase this item?</p>
+  
+  <div class="btn-group">
+    <button class="confirm-btn" onclick="processOrder()">Confirm Purchase</button>
+    <button class="cancel-btn" onclick="window.history.back()">Cancel</button>
+  </div>
+</div>
+
+<div class="checkout-container" id="thank-you-msg">
+  <h1 style="color:#4CAF50;">Order Successful! ❤️</h1>
+  <p>Thank you for your purchase. Your Cute Teddy Bear is on the way!</p>
+  <img src="https://cdn-icons-png.flaticon.com/512/1160/1160358.png" width="100">
+  <br>
+  <a href="home.html" class="home-btn">Back to Shop</a>
+</div>
+
+<script>
+if (localStorage.getItem('isLoggedIn') !== 'true') {
+  window.location.replace("index.html");
+}
+
+function processOrder() {
+  document.getElementById('checkout-box').style.display = 'none';
+  document.getElementById('thank-you-msg').style.display = 'block';
+  // ล้างตะกร้าสมมติ (ถ้ามี)
+  localStorage.removeItem('toyCart');
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Toy Store - Home</title>
+<style>
+  body { margin: 0; font-family: Arial, Helvetica, sans-serif; background: #f6f0ff; }
+  .header-banner { width: 100%; display: block; max-height: 400px; object-fit: cover; }
+  .menu-text { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; padding: 20px; background: linear-gradient(to right, #ffd6f3, #d6e8ff); }
+  .menu-text a { text-decoration: none; font-weight: bold; font-size: 14px; padding: 10px 18px; border-radius: 25px; background: #ffffff; color: #7b2cff; box-shadow: 0 5px 10px rgba(0,0,0,0.1); transition: 0.3s; }
+  .menu-text a:hover { background: #ffb3e6; color: #ffffff; transform: translateY(-6px) scale(1.1); }
+  .product-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; padding: 40px 10%; }
+  .product-card { transition: 0.3s; padding: 15px; border-radius: 15px; background: #fff; width: calc(33.33% - 50px); min-width: 280px; text-align: center; box-shadow: 0 4px 8px rgba(0,0,0,0.05); box-sizing: border-box; }
+  .product-card:hover { transform: translateY(-8px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+  .product-card img { width: 100%; height: 250px; object-fit: cover; border-radius: 10px; cursor: pointer; } /* เพิ่ม cursor ให้รู้ว่ากดได้ */
+  .product-card a { text-decoration: none; color: inherit; } /* ตกแต่งลิงก์ชื่อสินค้า */
+  .action-buttons { margin-top: 15px; display: flex; justify-content: center; gap: 8px; }
+  .action-buttons a { text-decoration: none; font-size: 13px; padding: 8px 10px; border-radius: 20px; font-weight: bold; transition: 0.3s; color: white; flex: 1; cursor: pointer; }
+  .buy-btn { background: #4CAF50; }
+  .cart-btn { background: #2196F3; }
+  .fav-btn { background: #ff5ca2; }
+  .logout-btn { background: #f44336 !important; color: white !important; }
+  .heart { position: fixed; font-size: 24px; pointer-events: none; animation: floatUp 1.5s ease forwards; z-index: 9999; }
+  @keyframes floatUp { 0% { transform: translateY(0) scale(1); opacity: 1; } 100% { transform: translateY(-120px) scale(2); opacity: 0; } }
+  .footer { background: linear-gradient(to right, #d6e8ff, #ffd6f3); padding: 30px 20px; text-align: center; color: #333; margin-top: 40px; }
+</style>
+</head>
+<body>
+
+<img src="Product (9).png" class="header-banner">
+
+<div class="menu-text">
+  <a href="home.html">Home</a>
+  <a href="age.html">Age</a>
+  <a href="Brands.html">Brands</a>
+  <a href="cart.html">Cart</a>
+  <a href="discount.html">Discount</a>
+  <a href="faver.html">Faver</a>
+  <a href="Giftcard.html">Giftcard</a>
+  <a href="New.html">New</a>
+  <a href="Product.html">Product</a>
+  <a href="search.html">Search</a>
+  <a href="#" onclick="logout()" class="logout-btn">Logout</a>
+</div>
+
+<div class="product-container">
+  <div class="product-card">
+    <a href="CuteTeddyBear.html"> <img src="Cute Teddy Bear_.jpg"><br>
+    <strong>Cute Teddy Bear</strong>
+    </a>
+    <div class="action-buttons">
+      <a href="CuteTeddyBear.html" class="buy-btn">Buy</a> <a onclick="addToCart('Cute Teddy Bear', 25.0, 'Cute Teddy Bear_.jpg')" class="cart-btn">Cart</a>
+      <a onclick="showHeart(event, 'Cute Teddy Bear', 25.0, 'Cute Teddy Bear_.jpg')" class="fav-btn">❤️ Favor</a>
+    </div>
+  </div>
+
+  <div class="product-card"> <a href="checkout2.html"><img src="Toy Car.jpg"></a><br>
+    <strong>Toy Car</strong>
+    <div class="action-buttons">
+      <a href="Product.html" class="buy-btn">Buy</a>
+      <a onclick="addToCart('Toy Car', 15.0, 'Toy Car.jpg')" class="cart-btn">Cart</a>
+      <a onclick="showHeart(event, 'Toy Car', 15.0, 'Toy Car.jpg')" class="fav-btn">❤️ Favor</a>
+    </div>
+  </div>
+  
+  <div class="product-card">
+    <img src="Building Blocks.jpg"><br>
+    <strong>Building Blocks</strong>
+    <div class="action-buttons">
+      <a href="Product.html" class="buy-btn">Buy</a>
+      <a onclick="addToCart('Building Blocks', 30.0, 'Building Blocks.jpg')" class="cart-btn">Cart</a>
+      <a onclick="showHeart(event, 'Building Blocks', 30.0, 'Building Blocks.jpg')" class="fav-btn">❤️ Favor</a>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <h2>Contact Us</h2>
+  <p>📍 Address: Toy Store Phuttalungok, Thailand</p>
+  <p>📞 Phone: 081-062-6483</p>
+  <p>📧 Email: <a href="mailto:toystore@email.com">toystore@email.com</a></p>
+  <p>🌐 Facebook: <a href="#">Toy Store Page</a></p>
+</div>
+
+<script>
+if (localStorage.getItem('isLoggedIn') !== 'true') {
+  window.location.replace("index.html");
+}
+
+function logout() {
+  localStorage.setItem('isLoggedIn', 'false');
+  window.location.replace("index.html");
+}
+
+function addToCart(name, price, image) {
+  let cart = JSON.parse(localStorage.getItem('toyCart')) || [];
+  cart.push({ name: name, price: price, image: image });
+  localStorage.setItem('toyCart', JSON.stringify(cart));
+  alert(name + ' added to cart!');
+}
+
+function showHeart(event, name, price, image) {
+  event.preventDefault();
+  let favs = JSON.parse(localStorage.getItem('toyFavs')) || [];
+  favs.push({ name: name, price: price, image: image });
+  localStorage.setItem('toyFavs', JSON.stringify(favs));
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "❤️";
+  heart.style.left = event.clientX + "px";
+  heart.style.top = event.clientY + "px";
+  document.body.appendChild(heart);
+  setTimeout(() => {
+    heart.remove();
+    window.location.href = "faver.html";
+  }, 800);
+}
+</script>
+</body>
+</html>
