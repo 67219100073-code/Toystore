@@ -1,0 +1,218 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Toy Store - All Products</title>
+
+<style>
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f8f9fa;
+    color: #333;
+  }
+
+  .header-banner {
+    width: 100%;
+    display: block;
+    max-height: 300px;
+    object-fit: cover;
+  }
+
+  .menu-text {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 25px;
+    background: linear-gradient(135deg, #ffd6f3 0%, #d6e8ff 100%);
+    box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+  }
+
+  .menu-text a {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 15px;
+    padding: 10px 22px;
+    border-radius: 30px;
+    background: #ffffff;
+    color: #7b2cff;
+    transition: 0.3s;
+  }
+
+  .menu-text a:hover {
+    background: #7b2cff;
+    color: #ffffff;
+  }
+
+  .page-title {
+    text-align: center;
+    padding: 50px 0 10px;
+    color: #7b2cff;
+    font-size: 35px;
+  }
+
+  .product-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding: 40px 8%;
+  }
+
+  .product-card {
+    background: #fff;
+    width: calc(25% - 30px);
+    min-width: 260px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: 0.3s;
+    text-align: center;
+    border: 1px solid #f0f0f0;
+  }
+
+  .product-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 15px 35px rgba(123, 44, 255, 0.15);
+  }
+
+  .product-card img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+  }
+
+  .product-detail {
+    padding: 20px;
+  }
+
+  .product-detail h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #444;
+  }
+
+  .price {
+    color: #ff4fa3;
+    font-size: 22px;
+    font-weight: bold;
+    margin: 12px 0;
+  }
+
+  .btn-buy {
+    width: 100%;
+    padding: 12px;
+    background: #7b2cff;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .btn-buy:hover {
+    background: #ff4fa3;
+  }
+
+  .footer {
+    background: #fff;
+    padding: 40px;
+    text-align: center;
+    margin-top: 60px;
+    border-top: 2px solid #f6f0ff;
+  }
+</style>
+</head>
+
+<body>
+
+<img src="../chadjaen/Product.png" class="header-banner">
+
+<div class="menu-text">
+  <a href="index.html">Home</a>
+  <a href="age.html">Age</a>
+  <a href="Brands.html">Brands</a>
+  <a href="cart.html">Cart</a>
+  <a href="discount.html">Discount</a>
+  <a href="faver.html">Faver</a>
+  <a href="Giftcard.html">Giftcard</a>
+  <a href="newproduct.html">New</a>
+  <a href="product.html">Product</a>
+  <a href="search.html">Search</a>
+</div>
+
+<h1 class="page-title">Explore All Toys</h1>
+
+<div class="product-grid">
+  <div class="product-card">
+    <img src="Cute Teddy Bear_.jpg">
+    <div class="product-detail">
+      <h3>Cute Teddy Bear</h3>
+      <div class="price">$25.00</div>
+      <button class="btn-buy" onclick="addToCart('Cute Teddy Bear', 25, 'Cute Teddy Bear_.jpg')">Add to Cart</button>
+    </div>
+  </div>
+
+  <div class="product-card">
+    <img src="Toy Car.jpg">
+    <div class="product-detail">
+      <h3>Speedy Toy Car</h3>
+      <div class="price">$15.00</div>
+      <button class="btn-buy" onclick="addToCart('Toy Car', 15, 'Toy Car.jpg')">Add to Cart</button>
+    </div>
+  </div>
+
+  <div class="product-card">
+    <img src="Building Blocks.jpg">
+    <div class="product-detail">
+      <h3>Magic Blocks</h3>
+      <div class="price">$30.00</div>
+      <button class="btn-buy" onclick="addToCart('Building Blocks', 30, 'Building Blocks.jpg')">Add to Cart</button>
+    </div>
+  </div>
+
+  <div class="product-card">
+    <img src="Super Robot.jpg">
+    <div class="product-detail">
+      <h3>Alpha Robot</h3>
+      <div class="price">$50.00</div>
+      <button class="btn-buy" onclick="addToCart('Super Robot', 50, 'Super Robot.jpg')">Add to Cart</button>
+    </div>
+  </div>
+
+  <div class="product-card">
+    <img src="Wooden Puzzle.jpg">
+    <div class="product-detail">
+      <h3>Animal Puzzle</h3>
+      <div class="price">$20.00</div>
+      <button class="btn-buy" onclick="addToCart('Wooden Puzzle', 20, 'Wooden Puzzle.jpg')">Add to Cart</button>
+    </div>
+  </div>
+
+  <div class="product-card">
+    <img src="Mini Skateboard.jpg">
+    <div class="product-detail">
+      <h3>Pro Skateboard</h3>
+      <div class="price">$12.00</div>
+      <button class="btn-buy" onclick="addToCart('Mini Skateboard', 12, 'Mini Skateboard.jpg')">Add to Cart</button>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <p>© 2026 Toy Store Phuttalungok - All Rights Reserved</p>
+</div>
+
+<script>
+function addToCart(name, price, image) {
+  let cart = JSON.parse(localStorage.getItem('toyCart')) || [];
+  cart.push({ name: name, price: price, image: image });
+  localStorage.setItem('toyCart', JSON.stringify(cart));
+  alert(name + ' added to cart!');
+}
+</script>
+
+</body>
+</html>

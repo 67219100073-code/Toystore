@@ -1,0 +1,283 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Toy Store - Gift Cards</title>
+
+<style>
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f6f0ff;
+    color: #333;
+  }
+
+  .header-banner {
+    width: 100%;
+    display: block;
+    max-height: 400px;
+    object-fit: cover;
+  }
+
+  .menu-text {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 25px;
+    background: linear-gradient(135deg, #ffd6f3 0%, #d6e8ff 100%);
+    box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+  }
+
+  .menu-text a {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 15px;
+    padding: 12px 25px;
+    border-radius: 30px;
+    background: #ffffff;
+    color: #7b2cff;
+    box-shadow: 0 4px 10px rgba(123, 44, 255, 0.1);
+    transition: 0.3s;
+  }
+
+  .menu-text a:hover {
+    background: #7b2cff;
+    color: #ffffff;
+    transform: translateY(-3px);
+  }
+
+  .page-title {
+    text-align: center;
+    padding: 50px 0 20px;
+    color: #7b2cff;
+    font-size: 40px;
+  }
+
+  .gift-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    padding: 40px 10%;
+  }
+
+  .gift-card-ui {
+    width: 350px;
+    height: 220px;
+    background: linear-gradient(135deg, #7b2cff 0%, #ff4fa3 100%);
+    border-radius: 20px;
+    padding: 25px;
+    color: white;
+    position: relative;
+    box-shadow: 0 15px 35px rgba(123, 44, 255, 0.3);
+    transition: 0.4s;
+    cursor: pointer;
+    overflow: hidden;
+  }
+
+  .gift-card-ui:hover {
+    transform: translateY(-15px) rotate(2deg);
+  }
+
+  .gift-card-ui::before {
+    content: 'GIFT';
+    position: absolute;
+    top: -20px;
+    right: -10px;
+    font-size: 100px;
+    font-weight: 900;
+    opacity: 0.1;
+  }
+
+  .card-logo {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 40px;
+  }
+
+  .card-value {
+    font-size: 42px;
+    font-weight: 900;
+  }
+
+  .card-number {
+    margin-top: 20px;
+    font-family: 'Courier New', Courier, monospace;
+    letter-spacing: 2px;
+    opacity: 0.8;
+  }
+
+  .redeem-section {
+    max-width: 500px;
+    margin: 60px auto;
+    background: #fff;
+    padding: 40px;
+    border-radius: 30px;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(123, 44, 255, 0.1);
+    border: 3px dashed #7b2cff;
+  }
+
+  .redeem-section h2 {
+    color: #7b2cff;
+    margin-top: 0;
+  }
+
+  .redeem-input {
+    width: 90%;
+    padding: 15px;
+    border: 2px solid #f0f0f0;
+    border-radius: 15px;
+    font-size: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    outline: none;
+    margin-top: 15px;
+  }
+
+  .redeem-btn {
+    margin-top: 25px;
+    padding: 15px 50px;
+    background: #7b2cff;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .redeem-btn:hover {
+    background: #ff4fa3;
+    transform: translateY(-3px);
+  }
+
+  .balance-card {
+    background: #4CAF50;
+    color: white;
+    display: inline-block;
+    padding: 10px 25px;
+    border-radius: 15px;
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 18px;
+  }
+
+  .footer {
+    background: linear-gradient(to right, #d6e8ff, #ffd6f3);
+    padding: 50px 20px;
+    text-align: center;
+    margin-top: 50px;
+  }
+</style>
+</head>
+
+<body>
+
+<img src="Product (8).png" class="header-banner">
+
+<div class="menu-text">
+  <a href="index.html">Home</a>
+  <a href="age.html">Age</a>
+  <a href="Brands.html">Brands</a>
+  <a href="cart.html">Cart</a>
+  <a href="discount.html">Discount</a>
+  <a href="faver.html">Faver</a>
+  <a href="Giftcard.html">Giftcard</a>
+  <a href="newproduct.html">New</a>
+  <a href="product.html">Product</a>
+  <a href="search.html">Search</a>
+</div>
+
+<h1 class="page-title">Toy Store Gift Cards</h1>
+
+<div class="gift-container">
+  <div class="gift-card-ui" onclick="addToCart('Gift Card $50', 50, 'giftcard.png')">
+    <div class="card-logo">Toy Store</div>
+    <div class="card-value">$50.00</div>
+    <div class="card-number">**** **** **** 5050</div>
+  </div>
+
+  <div class="gift-card-ui" style="background: linear-gradient(135deg, #2196F3 0%, #00BCD4 100%);" onclick="addToCart('Gift Card $100', 100, 'giftcard.png')">
+    <div class="card-logo">Toy Store</div>
+    <div class="card-value">$100.00</div>
+    <div class="card-number">**** **** **** 1010</div>
+  </div>
+
+  <div class="gift-card-ui" style="background: linear-gradient(135deg, #FF9800 0%, #FF5722 100%);" onclick="addToCart('Gift Card $500', 500, 'giftcard.png')">
+    <div class="card-logo">Toy Store</div>
+    <div class="card-value">$500.00</div>
+    <div class="card-number">**** **** **** 5000</div>
+  </div>
+</div>
+
+<div class="redeem-section">
+  <h2>🎁 Redeem Gift Code</h2>
+  <p>Enter your code to receive free credit!</p>
+  <input type="text" id="coupon-code" class="redeem-input" placeholder="CODE HERE">
+  <br>
+  <button class="redeem-btn" onclick="redeemCode()">Redeem Now</button>
+  <div class="balance-card" id="user-balance">My Credit: $0.00</div>
+</div>
+
+<div class="footer">
+  <h2>Contact Us</h2>
+  <p>📍 Address: Toy Store Phuttalungok, Thailand</p>
+  <p>📞 Phone: 081-062-6483</p>
+  <p>📧 Email: <a href="mailto:toystore@email.com">toystore@email.com</a></p>
+  <p>🌐 Facebook: <a href="#">Toy Store Page</a></p>
+</div>
+
+<script>
+function updateBalanceDisplay() {
+  let balance = parseFloat(localStorage.getItem('userCredit')) || 0;
+  document.getElementById('user-balance').innerText = 'My Credit: $' + balance.toFixed(2);
+}
+
+function addToCart(name, price, image) {
+  let cart = JSON.parse(localStorage.getItem('toyCart')) || [];
+  cart.push({ name: name, price: price, image: image });
+  localStorage.setItem('toyCart', JSON.stringify(cart));
+  alert(name + ' added to cart!');
+}
+
+function redeemCode() {
+  const codeInput = document.getElementById('coupon-code').value.toUpperCase();
+  let currentBalance = parseFloat(localStorage.getItem('userCredit')) || 0;
+  let giftAmount = 0;
+
+  if (codeInput === 'FREE50') {
+    giftAmount = 50;
+  } else if (codeInput === 'TOY100') {
+    giftAmount = 100;
+  } else if (codeInput === 'SUPERGIFT') {
+    giftAmount = 500;
+  } else {
+    alert('Invalid Code!');
+    return;
+  }
+
+  let redeemedCodes = JSON.parse(localStorage.getItem('redeemedCodes')) || [];
+  if (redeemedCodes.includes(codeInput)) {
+    alert('Code already used!');
+    return;
+  }
+
+  currentBalance += giftAmount;
+  redeemedCodes.push(codeInput);
+
+  localStorage.setItem('userCredit', currentBalance);
+  localStorage.setItem('redeemedCodes', JSON.stringify(redeemedCodes));
+
+  alert('Success! Received $' + giftAmount);
+  updateBalanceDisplay();
+  document.getElementById('coupon-code').value = '';
+}
+
+updateBalanceDisplay();
+</script>
+
+</body>
+</html>

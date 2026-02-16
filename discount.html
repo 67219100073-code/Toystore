@@ -1,0 +1,242 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Toy Store - Hot Discounts</title>
+
+<style>
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f6f0ff;
+    color: #333;
+  }
+
+  .header-banner {
+    width: 100%;
+    display: block;
+    max-height: 400px;
+    object-fit: cover;
+  }
+
+  .menu-text {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 25px;
+    background: linear-gradient(135deg, #ffd6f3 0%, #d6e8ff 100%);
+    box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+  }
+
+  .menu-text a {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 15px;
+    padding: 12px 25px;
+    border-radius: 30px;
+    background: #ffffff;
+    color: #7b2cff;
+    box-shadow: 0 4px 10px rgba(123, 44, 255, 0.1);
+    transition: 0.3s;
+  }
+
+  .menu-text a:hover {
+    background: #7b2cff;
+    color: #ffffff;
+    transform: translateY(-3px);
+  }
+
+  .page-title {
+    text-align: center;
+    padding: 50px 0 20px;
+    color: #ff4fa3;
+    font-size: 40px;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+
+  .product-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding: 40px 10%;
+  }
+
+  .product-card {
+    position: relative;
+    transition: 0.3s;
+    padding: 20px;
+    border-radius: 20px;
+    background: #fff;
+    width: calc(33.33% - 50px);
+    min-width: 280px;
+    text-align: center;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    box-sizing: border-box;
+  }
+
+  .product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(255, 79, 163, 0.2);
+  }
+
+  .discount-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #ff4f4f;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 15px;
+    font-weight: bold;
+    font-size: 14px;
+    z-index: 10;
+    box-shadow: 0 4px 8px rgba(255,0,0,0.2);
+  }
+
+  .product-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin-bottom: 15px;
+  }
+
+  .price-tag {
+    margin: 10px 0;
+  }
+
+  .old-price {
+    text-decoration: line-through;
+    color: #999;
+    font-size: 16px;
+    margin-right: 10px;
+  }
+
+  .new-price {
+    color: #ff4f4f;
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  .action-buttons {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+  }
+
+  .action-buttons a {
+    text-decoration: none;
+    font-size: 14px;
+    padding: 10px;
+    border-radius: 12px;
+    font-weight: bold;
+    color: white;
+    flex: 1;
+    transition: 0.3s;
+    cursor: pointer;
+  }
+
+  .buy-btn { background: #4CAF50; }
+  .cart-btn { background: #2196F3; }
+
+  .footer {
+    background: linear-gradient(to right, #d6e8ff, #ffd6f3);
+    padding: 50px 20px;
+    text-align: center;
+    margin-top: 50px;
+  }
+</style>
+</head>
+
+<body>
+
+<img src="Product (6).png" class="header-banner">
+
+<div class="menu-text">
+  <a href="home.html">Home</a>
+  <a href="age.html">Age</a>
+  <a href="Brands.html">Brands</a>
+  <a href="cart.html">Cart</a>
+  <a href="discount.html">Discount</a>
+  <a href="faver.html">Faver</a>
+  <a href="Giftcard.html">Giftcard</a>
+  <a href="New.html">New</a>
+  <a href="Product.html">Product</a>
+  <a href="search.html">Search</a>
+</div>
+
+<h1 class="page-title">🔥 Hot Discounts 🔥</h1>
+
+<div class="product-container">
+
+  <div class="product-card">
+    <div class="discount-badge">SAVE 20%</div>
+    <img src="Super Robot.jpg">
+    <h3>Super Robot</h3>
+    <div class="price-tag">
+      <span class="old-price">$50.00</span>
+      <span class="new-price">$40.00</span>
+    </div>
+    <div class="action-buttons">
+      <a onclick="buyNow('Super Robot', 40, 'Super Robot.jpg')" class="buy-btn">Buy Now</a>
+      <a onclick="addToCart('Super Robot', 40, 'Super Robot.jpg')" class="cart-btn">Cart</a>
+    </div>
+  </div>
+
+  <div class="product-card">
+    <div class="discount-badge">SAVE 50%</div>
+    <img src="Animal Puzzle.jpg">
+    <h3>Animal Puzzle</h3>
+    <div class="price-tag">
+      <span class="old-price">$20.00</span>
+      <span class="new-price">$10.00</span>
+    </div>
+    <div class="action-buttons">
+      <a onclick="buyNow('Animal Puzzle', 10, 'Animal Puzzle.jpg')" class="buy-btn">Buy Now</a>
+      <a onclick="addToCart('Animal Puzzle', 10, 'Animal Puzzle.jpg')" class="cart-btn">Cart</a>
+    </div>
+  </div>
+
+  <div class="product-card">
+    <div class="discount-badge">SAVE 30%</div>
+    <img src="Toy Car.jpg">
+    <h3>Classic Toy Car</h3>
+    <div class="price-tag">
+      <span class="old-price">$15.00</span>
+      <span class="new-price">$10.50</span>
+    </div>
+    <div class="action-buttons">
+      <a onclick="buyNow('Classic Toy Car', 10.5, 'Toy Car.jpg')" class="buy-btn">Buy Now</a>
+      <a onclick="addToCart('Classic Toy Car', 10.5, 'Toy Car.jpg')" class="cart-btn">Cart</a>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <h2>Contact Us</h2>
+  <p>📍 Address: Toy Store Thailand</p>
+  <p>📞 Phone: 081-062-6483</p>
+</div>
+
+<script>
+// ฟังก์ชัน Buy Now: ส่งข้อมูลสินค้าที่กดไปยังหน้า checkout.html ผ่าน LocalStorage
+function buyNow(name, price, image) {
+  const item = { name: name, price: price, image: image };
+  localStorage.setItem('selectedItem', JSON.stringify(item));
+  window.location.href = 'checkout.html';
+}
+
+function addToCart(name, price, image) {
+  let cart = JSON.parse(localStorage.getItem('toyCart')) || [];
+  cart.push({ name: name, price: price, image: image });
+  localStorage.setItem('toyCart', JSON.stringify(cart));
+  alert(name + ' added to cart with special price!');
+}
+</script>
+
+</body>
+</html>

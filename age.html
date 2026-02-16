@@ -1,0 +1,178 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Toy Store - Shop by Age</title>
+
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f6f0ff;
+  }
+
+  .header-banner {
+    width: 100%;
+    display: block;
+    max-height: 400px;
+    object-fit: cover;
+  }
+
+  .menu-text {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 20px;
+    background: linear-gradient(to right, #ffd6f3, #d6e8ff);
+  }
+
+  .menu-text a {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 25px;
+    background: #ffffff;
+    color: #7b2cff;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    transition: 0.3s;
+  }
+
+  .menu-text a:hover {
+    background: #ffb3e6;
+    color: #ffffff;
+    transform: translateY(-6px) scale(1.15);
+  }
+
+  .page-title {
+    text-align: center;
+    padding: 40px 0 10px;
+    color: #7b2cff;
+    font-size: 32px;
+  }
+
+  .age-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px; /* ระยะห่างระหว่างรูป */
+    padding: 40px 10%;
+  }
+
+  .age-card {
+    transition: 0.3s;
+    padding: 15px;
+    border-radius: 20px;
+    background: #fff;
+    /* จัดให้ 1 แถวมี 3 รูป */
+    width: calc(33.33% - 40px); 
+    min-width: 280px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    text-decoration: none;
+    color: inherit;
+    box-sizing: border-box;
+  }
+
+  .age-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(123, 44, 255, 0.2);
+  }
+
+  .age-card img {
+    width: 100%;
+    height: 220px; /* กำหนดความสูงรูปให้เท่ากันทุกใบ */
+    object-fit: cover;
+    border-radius: 15px;
+    margin-bottom: 15px;
+  }
+
+  .age-card h3 {
+    margin: 10px 0;
+    font-size: 22px;
+    color: #ff4fa3;
+  }
+
+  .age-card p {
+    color: #666;
+    font-size: 14px;
+    padding: 0 10px 10px;
+  }
+
+  .footer {
+    background: linear-gradient(to right, #d6e8ff, #ffd6f3);
+    padding: 30px 20px;
+    text-align: center;
+    color: #333;
+    margin-top: 50px;
+  }
+
+  .footer h2 { margin-top: 0; color: #7b2cff; }
+  .footer a { color: #ff4fa3; text-decoration: none; font-weight: bold; }
+</style>
+</head>
+
+<body>
+
+<img src="Product (2).png" class="header-banner">
+
+<div class="menu-text">
+  <a href="index.html">Home</a>
+  <a href="age.html">Age</a>
+  <a href="Brands.html">Brands</a>
+  <a href="cart.html">Cart</a>
+  <a href="discount.html">Discount</a>
+  <a href="faver.html">Faver</a>
+  <a href="Giftcard.html">Giftcard</a>
+  <a href="newproduct.html">New</a>
+  <a href="product.html">Product</a>
+  <a href="search.html">Search</a>
+</div>
+
+<h1 class="page-title">Shop by Age</h1>
+
+<div class="age-container">
+
+  <a href="Product.html" class="age-card">
+    <img src="3-4 (1).png">
+    <h3>Age 3-4</h3>
+    <p>Preschool toys for early learning.</p>
+  </a>
+
+  <a href="Product.html" class="age-card">
+    <img src="3-4 (3).png">
+  <h3>Age 5-7</h3>
+    <p>Creative play and active toys.</p>
+  </a>
+
+  <a href="Product.html" class="age-card">
+    <img src="3-4 (4).png">
+    <h3>Age 8-11</h3>
+    <p>Action figures and board games.</p>
+  </a>
+
+  <a href="Product.html" class="age-card">
+    <img src="3-4 (5).png">
+    <h3>Age 12-14</h3>
+    <p>STEM kits and cool gadgets.</p>
+  </a>
+
+  <a href="Product.html" class="age-card">
+    <img src="3-4 (6).png">
+    <h3>All Ages</h3>
+    <p>Fun for the whole family.</p>
+  </a>
+
+</div>
+
+<div class="footer">
+  <h2>Contact Us</h2>
+  <p>📍 Address: Toy Store Phuttalungok, Thailand</p>
+  <p>📞 Phone: 081-062-6483</p>
+  <p>📧 Email: <a href="mailto:toystore@email.com">toystore@email.com</a></p>
+  <p>🌐 Facebook: <a href="#">Toy Store Page</a></p>
+</div>
+
+</body>
+</html>

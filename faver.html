@@ -1,0 +1,209 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Toy Store - My Favorites</title>
+
+<style>
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #fff0f5;
+    color: #333;
+  }
+
+  .header-banner {
+    width: 100%;
+    display: block;
+    max-height: 400px;
+    object-fit: cover;
+  }
+
+  .menu-text {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 25px;
+    background: linear-gradient(135deg, #ffd6f3 0%, #d6e8ff 100%);
+    box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+  }
+
+  .menu-text a {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 15px;
+    padding: 12px 25px;
+    border-radius: 30px;
+    background: #ffffff;
+    color: #7b2cff;
+    box-shadow: 0 4px 10px rgba(123, 44, 255, 0.1);
+    transition: 0.3s;
+  }
+
+  .menu-text a:hover {
+    background: #7b2cff;
+    color: #ffffff;
+    transform: translateY(-3px);
+  }
+
+  .page-title {
+    text-align: center;
+    padding: 40px 0;
+    color: #ff4fa3;
+    font-size: 35px;
+  }
+
+  .fav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+  }
+
+  .fav-card {
+    background: #fff;
+    width: calc(25% - 25px);
+    min-width: 250px;
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    position: relative;
+    transition: 0.3s;
+  }
+
+  .fav-card:hover {
+    transform: scale(1.03);
+  }
+
+  .fav-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px;
+  }
+
+  .fav-card h3 {
+    margin: 15px 0 5px;
+    color: #7b2cff;
+  }
+
+  .remove-fav {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #ff4f4f;
+    color: white;
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+  .add-to-cart-btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background: #7b2cff;
+    color: white;
+    text-decoration: none;
+    border-radius: 15px;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+
+  .add-to-cart-btn:hover {
+    background: #ff4fa3;
+  }
+
+  .footer {
+    background: linear-gradient(to right, #d6e8ff, #ffd6f3);
+    padding: 40px 20px;
+    text-align: center;
+    margin-top: 50px;
+  }
+</style>
+</head>
+
+<body>
+
+<img src="Product (7).png" class="header-banner">
+
+<div class="menu-text">
+  <a href="index.html">Home</a>
+  <a href="age.html">Age</a>
+  <a href="Brands.html">Brands</a>
+  <a href="cart.html">Cart</a>
+  <a href="discount.html">Discount</a>
+  <a href="faver.html">Faver</a>
+  <a href="Giftcard.html">Giftcard</a>
+  <a href="newproduct.html">New</a>
+  <a href="product.html">Product</a>
+  <a href="search.html">Search</a>
+</div>
+
+<h1 class="page-title">❤️ My Favorite Toys ❤️</h1>
+
+<div class="fav-container" id="fav-list">
+  </div>
+
+<div class="footer">
+  <h2>Contact Us</h2>
+  <p>📍 Address: Toy Store Phuttalungok, Thailand</p>
+  <p>📞 Phone: 081-062-6483</p>
+  <p>📧 Email: <a href="mailto:toystore@email.com">toystore@email.com</a></p>
+  <p>🌐 Facebook: <a href="#">Toy Store Page</a></p>
+</div>
+
+<script>
+function renderFavs() {
+  const favList = document.getElementById('fav-list');
+  const favs = JSON.parse(localStorage.getItem('toyFavs')) || [];
+
+  favList.innerHTML = '';
+
+  if (favs.length === 0) {
+    favList.innerHTML = '<p style="font-size:20px; color:#999;">You haven\'t added any favorites yet.</p>';
+  } else {
+    favs.forEach((item, index) => {
+      favList.innerHTML += `
+        <div class="fav-card">
+          <button class="remove-fav" onclick="removeFav(${index})">×</button>
+          <img src="${item.image}">
+          <h3>${item.name}</h3>
+          <p>$${item.price.toFixed(2)}</p>
+          <a href="#" class="add-to-cart-btn" onclick="moveToCart(${index})">Add to Cart</a>
+        </div>
+      `;
+    });
+  }
+}
+
+function removeFav(index) {
+  let favs = JSON.parse(localStorage.getItem('toyFavs')) || [];
+  favs.splice(index, 1);
+  localStorage.setItem('toyFavs', JSON.stringify(favs));
+  renderFavs();
+}
+
+function moveToCart(index) {
+  let favs = JSON.parse(localStorage.getItem('toyFavs')) || [];
+  let cart = JSON.parse(localStorage.getItem('toyCart')) || [];
+  
+  cart.push(favs[index]);
+  localStorage.setItem('toyCart', JSON.stringify(cart));
+  
+  alert('Moved to cart!');
+}
+
+renderFavs();
+</script>
+
+</body>
+</html>

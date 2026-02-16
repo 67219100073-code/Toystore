@@ -1,0 +1,199 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Toy Store - Cute Teddy Bear</title>
+<style>
+  body { 
+    margin: 0; 
+    font-family: Arial, Helvetica, sans-serif; 
+    background: #f6f0ff; 
+    color: #333; 
+  }
+  .header-banner { 
+    width: 100%; 
+    display: block; 
+    max-height: 400px; 
+    object-fit: cover; 
+  }
+  .menu-text { 
+    display: flex; 
+    justify-content: center; 
+    flex-wrap: wrap; 
+    gap: 12px; 
+    padding: 20px; 
+    background: linear-gradient(to right, #ffd6f3, #d6e8ff); 
+  }
+  .menu-text a { 
+    text-decoration: none; 
+    font-weight: bold; 
+    font-size: 14px; 
+    padding: 10px 18px; 
+    border-radius: 25px; 
+    background: #ffffff; 
+    color: #7b2cff; 
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1); 
+    transition: 0.3s; 
+    text-transform: uppercase;
+  }
+  .menu-text a:hover { 
+    background: #ffb3e6; 
+    color: #ffffff; 
+    transform: translateY(-6px) scale(1.1); 
+  }
+  .logout-btn { 
+    background: #f44336 !important; 
+    color: white !important; 
+  }
+  .product-detail-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 50px;
+    padding: 60px 10%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .product-image-area {
+    flex: 1;
+    min-width: 350px;
+    max-width: 500px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  }
+  .product-image-area img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+  }
+  .product-info-area {
+    flex: 2;
+    min-width: 350px;
+    background: #fff;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  }
+  .product-info-area h1 {
+    color: #7b2cff;
+    font-size: 48px;
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+  .product-info-area .price {
+    font-size: 36px;
+    color: #ff4fa3;
+    font-weight: bold;
+    margin-bottom: 30px;
+  }
+  .product-info-area p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 30px;
+  }
+  .action-buttons-detail {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+  }
+  .action-buttons-detail a, .action-buttons-detail button {
+    flex: 1;
+    padding: 15px 25px;
+    border-radius: 30px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    transition: 0.3s;
+    cursor: pointer;
+    border: none;
+  }
+  .buy-btn-detail { background: #4CAF50; color: white; }
+  .buy-btn-detail:hover { background: #45a049; transform: translateY(-3px); }
+  .cart-btn-detail { background: #2196F3; color: white; }
+  .cart-btn-detail:hover { background: #1976d2; transform: translateY(-3px); }
+  .fav-btn-detail { background: #ff5ca2; color: white; }
+  .fav-btn-detail:hover { background: #e04a8e; transform: translateY(-3px); }
+  .footer { 
+    background: linear-gradient(to right, #d6e8ff, #ffd6f3); 
+    padding: 30px 20px; 
+    text-align: center; 
+    color: #333; 
+    margin-top: 60px; 
+  }
+</style>
+</head>
+<body>
+<div class="menu-text">
+  <a href="home.html">Home</a>
+  <a href="age.html">Age</a>
+  <a href="Brands.html">Brands</a>
+  <a href="cart.html">Cart</a>
+  <a href="discount.html">Discount</a>
+  <a href="faver.html">Faver</a>
+  <a href="Giftcard.html">Giftcard</a>
+  <a href="New.html">New</a>
+  <a href="Product.html">Product</a>
+  <a href="search.html">Search</a>
+  <a href="#" onclick="logout()" class="logout-btn">Logout</a>
+</div>
+
+<div class="product-detail-container">
+  <div class="product-image-area">
+    <img src="Cute Teddy Bear_.jpg" alt="Cute Teddy Bear">
+  </div>
+  <div class="product-info-area">
+    <h1>Cute Teddy Bear</h1>
+    <div class="price">$25.00</div>
+    <p>
+      Meet our adorable Cute Teddy Bear! Made from the softest plush material, 
+      this bear is perfect for cuddles and companionship. With its friendly smile 
+      and warm embrace, it's sure to become a beloved friend for all ages. 
+      A perfect gift for birthdays, holidays, or just because!
+    </p>
+    <div class="action-buttons-detail">
+      <a href="checkout.html" class="buy-btn-detail">Buy Now</a>
+      <button class="cart-btn-detail" onclick="addToCart('Cute Teddy Bear', 25.0, 'Cute Teddy Bear_.jpg')">Add to Cart</button>
+      <button class="fav-btn-detail" onclick="addToFav('Cute Teddy Bear', 25.0, 'Cute Teddy Bear_.jpg')">❤️ Add to Favor</button>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <h2>Contact Us</h2>
+  <p>📍 Address: Toy Store Phuttalungok, Thailand</p>
+  <p>📞 Phone: 081-062-6483</p>
+  <p>📧 Email: <a href="mailto:toystore@email.com">toystore@email.com</a></p>
+  <p>🌐 Facebook: <a href="#">Toy Store Page</a></p>
+</div>
+
+<script>
+if (localStorage.getItem('isLoggedIn') !== 'true') {
+  window.location.replace("index.html");
+}
+
+function logout() {
+  localStorage.setItem('isLoggedIn', 'false');
+  window.location.replace("index.html");
+}
+
+function addToCart(name, price, image) {
+  let cart = JSON.parse(localStorage.getItem('toyCart')) || [];
+  cart.push({ name: name, price: price, image: image });
+  localStorage.setItem('toyCart', JSON.stringify(cart));
+  alert(name + ' added to cart!');
+}
+
+function addToFav(name, price, image) {
+  let favs = JSON.parse(localStorage.getItem('toyFavs')) || [];
+  favs.push({ name: name, price: price, image: image });
+  localStorage.setItem('toyFavs', JSON.stringify(favs));
+  alert(name + ' added to favorites!');
+}
+</script>
+</body>
+</html>

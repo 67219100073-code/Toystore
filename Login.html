@@ -1,0 +1,182 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Gift Shop - Welcome</title>
+
+<style>
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f6f0ff 0%, #ffd6f3 100%);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .auth-container {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    padding: 40px;
+    border-radius: 30px;
+    box-shadow: 0 15px 35px rgba(123, 44, 255, 0.1);
+    width: 100%;
+    max-width: 400px;
+    border: 2px solid #fff;
+  }
+
+  .tab-group {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #f0f0f0;
+  }
+
+  .tab-btn {
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #888;
+    transition: 0.3s;
+    border-bottom: 3px solid transparent;
+  }
+
+  .tab-btn.active {
+    color: #7b2cff;
+    border-bottom: 3px solid #7b2cff;
+  }
+
+  .auth-form {
+    display: none;
+  }
+
+  .auth-form.active {
+    display: block;
+  }
+
+  .input-group {
+    text-align: left;
+    margin-bottom: 20px;
+  }
+
+  .input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+    font-size: 14px;
+  }
+
+  .input-group input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #f0f0f0;
+    border-radius: 12px;
+    outline: none;
+    box-sizing: border-box;
+  }
+
+  .submit-btn {
+    width: 100%;
+    padding: 15px;
+    background: #7b2cff;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .submit-btn:hover {
+    background: #ff4fa3;
+    transform: translateY(-2px);
+  }
+
+  .signup-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+</style>
+</head>
+
+<body>
+
+<div class="auth-container">
+  <div class="tab-group">
+    <div class="tab-btn active" id="tab-l" onclick="switchTab('login')">Login</div>
+    <div class="tab-btn" id="tab-s" onclick="switchTab('signup')">Sign Up</div>
+  </div>
+
+  <div id="login-form" class="auth-form active">
+    <h2 style="text-align:center; color:#7b2cff;">Welcome Back</h2>
+    <div class="input-group">
+      <label>Username</label>
+      <input type="text">
+    </div>
+    <div class="input-group">
+      <label>Password</label>
+      <input type="password">
+    </div>
+    <button type="button" class="submit-btn" onclick="directLogin()">Login</button>
+  </div>
+
+  <div id="signup-form" class="auth-form">
+    <h2 style="text-align:center; color:#ff4fa3;">Create Account</h2>
+    <div class="signup-grid">
+      <div class="input-group">
+        <label>First Name</label>
+        <input type="text">
+      </div>
+      <div class="input-group">
+        <label>Last Name</label>
+        <input type="text">
+      </div>
+    </div>
+    <div class="input-group">
+      <label>Username</label>
+      <input type="text">
+    </div>
+    <div class="input-group">
+      <label>Password</label>
+      <input type="password">
+    </div>
+    <button type="button" class="submit-btn" style="background:#ff4fa3;" onclick="switchTab('login')">Register Now</button>
+  </div>
+</div>
+
+<script>
+  function switchTab(type) {
+    const loginF = document.getElementById('login-form');
+    const signupF = document.getElementById('signup-form');
+    const tabL = document.getElementById('tab-l');
+    const tabS = document.getElementById('tab-s');
+
+    if (type === 'login') {
+      loginF.classList.add('active');
+      signupF.classList.remove('active');
+      tabL.classList.add('active');
+      tabS.classList.remove('active');
+    } else {
+      signupF.classList.add('active');
+      loginF.classList.remove('active');
+      tabS.classList.add('active');
+      tabL.classList.remove('active');
+    }
+  }
+
+  function directLogin() {
+    
+    localStorage.clear();
+    localStorage.setItem('isLoggedIn', 'true');
+    
+    
+    window.location.href = "index.html";
+  }
+</script>
+
+</body>
+</html>
